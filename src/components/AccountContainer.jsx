@@ -29,6 +29,16 @@ function AccountContainer() {
   
   // Sort function here
   function onSort(sortBy){
+    const sortedTransactions = [...transactions].sort((a, b) => {
+      if (sortBy === "date") {
+        return new Date(a.date) - new Date(b.date);
+      } else if (sortBy === "amount") {
+        return a.amount - b.amount;
+      } else {
+        return 0; // No sorting
+      }
+    });
+    setTransactions(sortedTransactions);
     
   }
 
